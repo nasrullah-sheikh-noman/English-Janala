@@ -21,6 +21,16 @@ const displayLevelWord = (levels) => {
   const wordContainer = document.getElementById("word-container");
   wordContainer.innerHTML = "";
 
+  const blankLesson = document.getElementById("blank-lesson");
+
+  if(levels.length == 0) {
+    blankLesson.classList.remove("hidden");
+    wordContainer.classList.add("hidden");
+    selectLesson.classList.add("hidden");
+  } else {
+    blankLesson.classList.add("hidden");
+  }
+
   levels.forEach(level => {
     const cardDiv = document.createElement("div");
     cardDiv.innerHTML = `
