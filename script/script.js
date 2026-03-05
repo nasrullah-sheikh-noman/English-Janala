@@ -18,13 +18,13 @@ const displayLevelWord = (levels) => {
   levels.forEach(level => {
     const cardDiv = document.createElement("div");
     cardDiv.innerHTML = `
-    <div class="bg-white rounded-sm space-y-3 py-8 px-5 gap-5 shadow-sm text-center h-full ">
+    <div class="bg-white rounded-sm space-y-3 py-12 px-5 gap-5 shadow-sm text-center h-full ">
       <h2 class="text-2xl font-semibold">${level.word}</h2>
       <p class="text-lg">Meaning / Pronounciation</p>
       <p class="text-2xl font-bold">${level.meaning} / ${level.pronunciation}</p>
       <div class="flex justify-between">
-        <button class="btn"><i class="fa-solid fa-circle-info"></i></button>
-        <button class="btn"><i class="fa-solid fa-volume-high"></i></button>
+        <button class="btn bg-[#1A91FF10]"><i class="fa-solid fa-circle-info"></i></button>
+        <button class="btn bg-[#1A91FF10]"><i class="fa-solid fa-volume-high"></i></button>
       </div>
     </div>
     `
