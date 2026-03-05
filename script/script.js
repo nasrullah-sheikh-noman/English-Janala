@@ -5,6 +5,12 @@ const loadLesson = () => {
 }
 
 const loadLevelWord = (id) => {
+  const selectLesson = document.getElementById("select-lesson");
+  selectLesson.classList.add("hidden");
+
+  const wordContainer = document.getElementById("word-container");
+  wordContainer.classList.remove("hidden");
+
   const url = (`https://openapi.programming-hero.com/api/level/${id}`)
   fetch(url)
   .then(res => res.json())
