@@ -4,21 +4,50 @@ const loadLesson = () => {
     .then(data => displayLesson(data.data))
 }
 
+const loadLevelWord = (id) => {
+  const url = (`https://openapi.programming-hero.com/api/level/${id}`)
+  fetch(url)
+  .then(res => res.json())
+  .then(data => displayLevelWord(data.data))
+}
+
+const displayLevelWord = (levels) => {
+  const wordContainer = document.getElementById("word-container");
+  wordContainer.innerHTML = "";
+
+  levels.forEach(level => {
+    const cardDiv = document.createElement("div");
+    cardDiv.innerHTML = `
+    <div class="bg-white rounded-sm space-y-3 py-8 px-5 gap-5 shadow-sm text-center h-full ">
+      <h2 class="text-2xl font-semibold">${level.word}</h2>
+      <p class="text-lg">Meaning / Pronounciation</p>
+      <p class="text-2xl font-bold">${level.meaning} / ${level.pronunciation}</p>
+      <div class="flex justify-between">
+        <button class="btn"><i class="fa-solid fa-circle-info"></i></button>
+        <button class="btn"><i class="fa-solid fa-volume-high"></i></button>
+      </div>
+    </div>
+    `
+    wordContainer.append(cardDiv);
+  })
+}
+
 const displayLesson = (lessons) => {
   const levelsContainer = document.getElementById("levels-container");
-  console.log(levelsContainer);
   levelsContainer.innerHTML = " ";
 
   lessons.forEach(lesson => {
-    console.log(lesson);
     const btnDiv = document.createElement("div");
     btnDiv.innerHTML = `
-      <button class="btn btn-outline btn-primary" href=""
+      <button onclick="loadLevelWord(${lesson.level_no})" class="btn btn-outline btn-primary" href=""
         ><i class="fa-solid fa-book-open"></i> Lesson - ${lesson.level_no}
         </button>
         `
       levelsContainer.append(btnDiv);
     });
 }
+
+
+
 
 loadLesson();
