@@ -33,7 +33,6 @@
 
     <!-- stylesheet  -->
     <link rel="stylesheet" href="styles/style.css" />
-
   </head>
   <body>
     <!-- navbar  -->
@@ -130,23 +129,39 @@
     </section>
 
     <!-- main section  -->
-    <section class="py-5 ">
+    <section class="py-5">
       <h2 class="text-4xl font-bold w-11/12 mx-auto text-center gap-2">
         <span class="text-[#00BCFF]"> Let's </span> Learn Vocabularies
       </h2>
 
-      <div id="levels-container" class="flex items-center text-center justify-center gap-3 mt-12 flex-wrap">
-
-      </div>
+      <div
+        id="levels-container"
+        class="flex items-center text-center justify-center gap-3 mt-12 flex-wrap"
+      ></div>
     </section>
 
+    <!-- words level  -->
+    <section
+      id="word-container"
+      class="hidden bg-gray-100 w-11/12 grid grid-cols-3 mx-auto p-6 my-12 gap-5"
+    ></section>
 
-    <section id="word-container" class="bg-gray-100 w-11/12 grid grid-cols-3 mx-auto p-6 my-12 gap-5">
-
+    <!-- lesson select  -->
+    <section
+      id="select-lesson"
+      class="bg-gray-100 w-11/12 mx-auto p-12 my-12 text-center space-y-3 rounded-sm"
+    >
+      <h4 class="text-lg text-[#79716B]">
+        <span class="text-bangla">আপনি এখনো কোন</span> Lesson Select
+        <span class="text-bangla">করেন নি</span>
+      </h4>
+      <h2 class="font-bold text-3xl">
+        <span class="text-bangla">একটি</span> Lesson Select
+        <span class="text-bangla">করুন।</span>
+      </h2>
     </section>
-    
 
     <!-- script  -->
-     <script src="script/script.js"></script>
+    <script src="script/script.js"></script>
   </body>
 </html>
