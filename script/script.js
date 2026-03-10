@@ -70,10 +70,10 @@ const showModal = (info) => {
     <div class="space-y-2">
       <p class="text-md font-medium font-bangla ">সমার্থক শব্দ গুলো</p>
 
-      <div class="flex items-center gap-4">
-        <button class="btn ">${info.synonyms[0]}</button>
-        <button class="btn">${info.synonyms[1]}</button>
-        <button class="btn">${info.synonyms[2]}</button>
+      <div class="flex-wrap items-center space-y-2 gap-4">
+        <button class="btn ">${info.synonyms[0] ? info.synonyms[0] : "synonyms not defined"}</button>
+        <button class="btn">${info.synonyms[1] ? info.synonyms[1] : "synonyms not defined"}</button>
+        <button class="btn">${info.synonyms[2] ? info.synonyms[2] : "synonyms not defined"}</button>
       </div>
     </div>
 
