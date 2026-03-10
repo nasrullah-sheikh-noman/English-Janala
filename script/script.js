@@ -46,15 +46,15 @@ const showModal = (info) => {
   const modalContainer = document.getElementById("modal-info");
 
   modalContainer.innerHTML = `
-    <h2>Eager (     :ইগার)</h2>
+    <h2>${info.word} (     :${info.pronunciation})</h2>
     <h4>Meaning</h4>
-    <h4>আগ্রহী</h4>
+    <h4>${info.meaning}</h4>
     <h3>Example</h3>
-    <p>The kids were eager to open their gifts.</p>
+    <p>${info.sentence}</p>
     <p>সমার্থক শব্দ গুলো</p>
-    <button>Enthusiastic</button>
-    <button>excited</button>
-    <button>keen</button>
+    <button>${info.synonyms[0]}</button>
+    <button>${info.synonyms[1]}</button>
+    <button>${info.synonyms[2]}</button>
     <button>Complete Learning</button>
   `;
 
