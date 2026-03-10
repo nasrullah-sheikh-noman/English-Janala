@@ -9,6 +9,7 @@ const removeActive = () => {
   lessonBtn.forEach(bt => bt.classList.remove("active"));
 }
 
+
 const loadLevelWord = (id) => {
 
   const selectLesson = document.getElementById("select-lesson");
@@ -19,13 +20,13 @@ const loadLevelWord = (id) => {
 
   const url = (`https://openapi.programming-hero.com/api/level/${id}`)
   fetch(url)
-  .then(res => res.json())
-  .then(data => {
-    displayLevelWord(data.data);
-    removeActive();
-    const active = document.getElementById(`active-${id}`);
-    active.classList.add("active");
-  })
+    .then(res => res.json())
+    .then(data => {
+      displayLevelWord(data.data);
+      removeActive();
+      const active = document.getElementById(`active-${id}`);
+      active.classList.add("active");
+    })
 }
 
 
@@ -35,11 +36,15 @@ const displayModalContainer = (id) => {
     .then(res => res.json())
     .then(details => {
       showModal(details.data)
-      }
+    }
     )
-
-
 }
+
+
+
+
+
+
 
 
 const showModal = (info) => {
@@ -92,7 +97,7 @@ const displayLevelWord = (levels) => {
   const blankLesson = document.getElementById("blank-lesson");
   const selectLesson = document.getElementById("select-lesson");
 
-  if(levels.length == 0) {
+  if (levels.length == 0) {
     blankLesson.classList.remove("hidden");
     wordContainer.classList.add("hidden");
     selectLesson.classList.add("hidden");
@@ -110,7 +115,7 @@ const displayLevelWord = (levels) => {
 
       <p class="text-lg">Meaning / Pronounciation</p>
 
-      <p class="text-2xl font-bold">${level.meaning  ? level.meaning : "অর্থ পাওয়া যায়নি"} / ${level.pronunciation ? level.pronunciation : "উচ্চারণ পাওয়া যায়নি"}</p>
+      <p class="text-2xl font-bold">${level.meaning ? level.meaning : "অর্থ পাওয়া যায়নি"} / ${level.pronunciation ? level.pronunciation : "উচ্চারণ পাওয়া যায়নি"}</p>
 
       <div class="flex justify-between">
 
@@ -137,9 +142,52 @@ const displayLesson = (lessons) => {
         ><i class="fa-solid fa-book-open"></i> Lesson - ${lesson.level_no}
         </button>
         `
-      levelsContainer.append(btnDiv);
-    });
+    levelsContainer.append(btnDiv);
+  });
 }
+
+
+
+
+
+const vocabularySearch = document.getElementById("vocabulary-search");
+vocabularySearch.addEventListener("click", () => {
+
+  const selectLesson = document.getElementById("select-lesson");
+  selectLesson.classList.add("hidden");
+
+  const wordContainer = document.getElementById("word-container");
+  wordContainer.classList.remove("hidden");
+
+  removeActive();
+
+  fetch("https://openapi.programming-hero.com/api/words/all")
+    .then(res => res.json())
+    .then(data => {
+      searchInput(data.data)
+    })
+
+
+  const searchInput = (value) => {
+    const vocabularyInput = document.getElementById("vocabulary-input");
+    const inputValue = vocabularyInput.value.trim().toLowerCase();
+
+    const filterVocabulary = value.filter(data => {
+
+      return data.word.toLowerCase().includes(inputValue);
+
+
+    })
+
+    displayLevelWord(filterVocabulary);
+
+  }
+
+
+})
+
+
+
 
 
 
