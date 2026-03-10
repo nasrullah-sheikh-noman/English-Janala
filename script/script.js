@@ -46,16 +46,38 @@ const showModal = (info) => {
   const modalContainer = document.getElementById("modal-info");
 
   modalContainer.innerHTML = `
-    <h2>${info.word} (     :${info.pronunciation})</h2>
-    <h4>Meaning</h4>
-    <h4>${info.meaning}</h4>
-    <h3>Example</h3>
-    <p>${info.sentence}</p>
-    <p>সমার্থক শব্দ গুলো</p>
-    <button>${info.synonyms[0]}</button>
-    <button>${info.synonyms[1]}</button>
-    <button>${info.synonyms[2]}</button>
-    <button>Complete Learning</button>
+
+    <h2 class="text-2xl font-bold">${info.word} (<i class="fa-solid fa-microphone-lines"></i> :<span>${info.pronunciation}</span>)</h2>
+
+    <div class="space-y-1">
+      <h4 class="text-md font-semibold">Meaning</h4>
+
+      <h4 class="font-bangla text-lg">${info.meaning ? info.meaning : "অর্থ পাওয়া যায়নি"}</h4>
+    </div>
+
+    <div class="space-y-1">
+      <h3 class=" text-md font-semibold">PartsOfSpeech</h3>
+
+      <p class="text-lg">${info.partsOfSpeech ? info.partsOfSpeech : "parts Of Speech not found"}</p>
+    </div>
+
+    <div class="space-y-1">
+      <h3 class="text-mf font-semibold">Example</h3>
+
+      <p class="text-md text-gray-500">${info.sentence}</p>
+    </div>
+
+    <div class="space-y-2">
+      <p class="text-md font-medium font-bangla ">সমার্থক শব্দ গুলো</p>
+
+      <div class="flex items-center gap-4">
+        <button class="btn ">${info.synonyms[0]}</button>
+        <button class="btn">${info.synonyms[1]}</button>
+        <button class="btn">${info.synonyms[2]}</button>
+      </div>
+    </div>
+
+    <button class="btn btn-primary">Complete Learning</button>
   `;
 
   document.getElementById("modal_container").showModal();
